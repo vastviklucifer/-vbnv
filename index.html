@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -20,32 +21,54 @@
         h1 {
             color: #ff3366;
             font-size: 2.5em;
+            margin: 0;
         }
 
         h2 {
             color: #ff6699;
+            margin-top: 20px;
+        }
+
+        p a {
+            color: #ff6699;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        .gif_container img {
+            width: 200px;
+            border-radius: 10px;
+            margin: 20px 0;
         }
 
         .button-container {
             margin-top: 20px;
+            position: relative;
         }
 
         .btn {
             padding: 15px;
             font-size: 18px;
-            margin: 10px;
             cursor: pointer;
             border: none;
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
             background-image: radial-gradient(circle, #ff6699, #ff3366);
             color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
         }
 
         .btn-yes {
@@ -90,6 +113,12 @@
 <body>
     <div>
         <h1>Will you like to go out on a date with me?</h1>
+        <p>
+            <a href="https://www.instagram.com/_developer_ra_hu_l/">_developer_ra_hu_l</a>
+        </p>
+        <div class="gif_container">
+            <img src="https://i.postimg.cc/pdNqPxx1/milk-and-mocha-cute.gif" alt="Cute animated illustration">
+        </div>
         <div class="button-container" id="initialButtons">
             <button class="btn btn-yes" id="yesBtn">❤</button>
             <button class="btn btn-no" id="noBtn">✘</button>
