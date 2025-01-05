@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Go Out With Me?</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #ff3366;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #ff6699;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 15px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s;
+            background-image: radial-gradient(circle, #ff6699, #ff3366);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-yes {
+            background-color: #ff6699;
+        }
+
+        .btn-no {
+            background-color: #ff3366;
+            position: absolute;
+        }
+
+        .btn-no:hover {
+            transform: translate(calc(50vw - 100px), calc(50vh - 100px));
+        }
+
+        .options-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .option {
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .option img {
+            width: 150px;
+            height: 100px;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .option p {
+            font-size: 1.2em;
+            color: #ff6699;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Will you like to go out on a date with me?</h1>
+        <div class="button-container" id="initialButtons">
+            <button class="btn btn-yes" id="yesBtn">❤</button>
+            <button class="btn btn-no" id="noBtn">✘</button>
+        </div>
+
+        <div class="options-container" id="options">
+            <h2>Pick an option for our date next week:</h2>
+            <div class="option" onclick="redirectToFinalPage('Bowling')">
+                <img src="https://via.placeholder.com/150" alt="Bowling">
+                <p>Bowling</p>
+            </div>
+            <div class="option" onclick="redirectToFinalPage('Cafe')">
+                <img src="https://via.placeholder.com/150" alt="Cafe">
+                <p>Cafe</p>
+            </div>
+            <div class="option" onclick="redirectToFinalPage('A Walk')">
+                <img src="https://via.placeholder.com/150" alt="Walk">
+                <p>A Walk</p>
+            </div>
+            <div class="option" onclick="redirectToFinalPage('Movie Night')">
+                <img src="https://via.placeholder.com/150" alt="Movie Night">
+                <p>Movie Night</p>
+            </div>
+            <div class="option" onclick="redirectToFinalPage('Amusement Park')">
+                <img src="https://via.placeholder.com/150" alt="Amusement Park">
+                <p>Amusement Park</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const initialButtons = document.getElementById('initialButtons');
+        const options = document.getElementById('options');
+
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * window.innerWidth - noBtn.offsetWidth;
+            const y = Math.random() * window.innerHeight - noBtn.offsetHeight;
+
+            noBtn.style.left = `${Math.max(0, Math.min(x, window.innerWidth - noBtn.offsetWidth))}px`;
+            noBtn.style.top = `${Math.max(0, Math.min(y, window.innerHeight - noBtn.offsetHeight))}px`;
+        });
+
+        yesBtn.addEventListener('click', () => {
+            initialButtons.style.display = 'none';
+            options.style.display = 'block';
+        });
+
+        function redirectToFinalPage(option) {
+            const date = '6th of Jan';
+            const time = 'after high classes';
+            const url = `data:text/html,<html><head><title>It's a Date!</title></head><body style='background-color:#ffe6e6; text-align:center; font-family:sans-serif;'><h1 style='color:#ff3366;'>It's Fixed!</h1><p style='color:#ff6699;'>We will go for ${option} on ${date} ${time}!</p><p style='font-size:24px;'>Looking forward to it!</p></body></html>`;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
